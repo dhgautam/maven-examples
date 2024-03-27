@@ -13,10 +13,6 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html#integration-testing-annotations-junit-jupiter
-//@ExtendWith(SpringExtension.class)
-//@WebAppConfiguration
-//@ContextConfiguration(classes = SpringConfig.class)
 @SpringJUnitWebConfig(SpringConfig.class)
 @DisplayName("Test Spring MVC default view")
 public class TestWelcome {
@@ -36,7 +32,6 @@ public class TestWelcome {
 
         this.mockMvc.perform(
                 get("/"))
-                //.andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(model().attribute("query", "123456"));
